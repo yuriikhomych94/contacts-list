@@ -21,16 +21,26 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TextEllipsisDirective } from './shared/directives/text-ellipsis.directive';
+
+const Directives = [
+  TextEllipsisDirective
+];
+
+const Components = [
+  AppComponent,
+  ContactsListComponent,
+  ContactDetailComponent,
+  CreateContactComponent,
+  EditContactComponent,
+  SearchInputComponent,
+  ContactsFormComponent
+]
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ContactsListComponent,
-    ContactDetailComponent,
-    CreateContactComponent,
-    EditContactComponent,
-    SearchInputComponent,
-    ContactsFormComponent
+    ...Components,
+    ...Directives
   ],
   imports: [
     BrowserModule,
