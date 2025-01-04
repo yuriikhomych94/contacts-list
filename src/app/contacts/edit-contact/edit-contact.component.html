@@ -1,0 +1,4 @@
+<ct-contacts-form [title]="'Edit contact'" [initialData]="contactService.currentContact" #contactsForm>
+  <button ctAction mat-button color="primary" [disabled]="!contactsForm.canSave" (click)="onSaveChange()">Edit contact</button>
+</ct-contacts-form>
+

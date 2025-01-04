@@ -1,0 +1,53 @@
+<mat-card *ngIf="contacts$ | async as contacts">
+  <div style="display: flex; justify-content: space-between">
+    <mat-card-title>Contacts</mat-card-title>
+    <button mat-button color="primary" (click)="openCreateContactDialog()">Create contact</button>
+  </div>
+  <ct-search-input [label]="'Search by user name'"
+                   (onSearch)="onSearchChange($event)"></ct-search-input>
+  <div class="result-info">
+    <span class="mat-card-subtitle">Result: {{ contacts.length }}</span>
+  </div>
+
+  <ng-container *ngIf="contacts.length; else noDataMessage">
+    <table mat-table [dataSource]="contacts" class="mat-elevation-z8">
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> User Name</th>
+        <td mat-cell *matCellDef="let contact"> {{ contact.username }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef> Last Name</th>
+        <td mat-cell *matCellDef="let contact"> {{ contact.lastname }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="emailAddress">
+        <th mat-header-cell *matHeaderCellDef> Email</th>
+        <td mat-cell *matCellDef="let contact"> {{ contact.emailAddress }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone</th>
+        <td mat-cell *matCellDef="let contact"> {{ contact.phone }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let contact">
+          <button mat-button color="accent" (click)="onSelectContact(contact.id); $event.stopPropagation()">Edit
+          </button>
+          <button mat-button color="accent" (click)="removeContact(contact.id); $event.stopPropagation()">Remove
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openInfoContact(row)"
+          style="cursor: pointer"></tr>
+    </table>
+  </ng-container>
+</mat-card>
+
+<ng-template #noDataMessage>
+  <span class="mat-card-subtitle">No data...</span>
+</ng-template>

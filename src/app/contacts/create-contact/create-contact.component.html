@@ -1,0 +1,4 @@
+<ct-contacts-form [title]="'Create contact'" #contactsForm>
+  <button ctAction mat-button color="primary" [disabled]="!contactsForm.canSave" (click)="onCreateContact()">Create</button>
+</ct-contacts-form>
+
