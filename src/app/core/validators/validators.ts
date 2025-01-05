@@ -10,4 +10,14 @@ export class CtValidators {
     return null;
   }
 
+  static phoneValidator(control: AbstractControl): ValidationErrors | null {
+      const value = control?.value;
+      if (!value) {
+        return null;
+      }
+      const phoneRegex = /^\+?[1-9]\d{9,14}$/;
+      const isValid = phoneRegex.test(value);
+      return isValid ? null : { invalidPhone: true };
+  }
+
 }

@@ -8,7 +8,8 @@ export const ValidationMessages = {
     { type: 'startWithSpace', message: 'Lastname cannot start with whitespace' }
   ],
   phone: [
-    { type: 'required', message: 'Phone is required' }
+    { type: 'required', message: 'Phone is required' },
+    { type: 'invalidPhone', message: 'Invalid phone number' }
   ],
   emailAddress: [
     { type: 'required', message: 'Email is required' },
