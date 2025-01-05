@@ -48,7 +48,7 @@ export class ContactsService {
 
   filterContacts(searchTerm: string): Observable<Contact[]> {
     return this.contacts$.pipe(
-      map(contacts => contacts.filter(contact => contact.username.toLowerCase().includes(searchTerm.toLowerCase())))
+      map(contacts => contacts.filter(contact => contact.username.toLowerCase().startsWith(searchTerm.toLowerCase())))
     );
   }
 
