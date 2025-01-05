@@ -23,7 +23,6 @@ export class EditContactComponent extends BaseComponent implements OnInit {
   }
 
   onSaveChange() {
-    if ( this.formComponent.form.valid ) {
       const updatedContact = {
         ...this.contactService.currentContact,
         ...this.formComponent.form.value,
@@ -31,9 +30,6 @@ export class EditContactComponent extends BaseComponent implements OnInit {
 
       this.contactService.applyContactChanges(updatedContact);
       this.dialogRef.close({ success: true, message: 'Contact updated successfully' });
-    } else {
-      this.formComponent.form.markAllAsTouched();
-    }
   }
 
 }
