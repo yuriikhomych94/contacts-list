@@ -62,7 +62,7 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
       username: new FormControl(currentContact?.username || '', [ Validators.required, CtValidators.startWithSpace ]),
       lastname: new FormControl(currentContact?.lastname || '', [ Validators.required, CtValidators.startWithSpace ]),
       emailAddress: new FormControl(currentContact?.emailAddress || '', [ Validators.required, Validators.email ]),
-      phone: new FormControl(currentContact?.phone || '', Validators.required),
+      phone: new FormControl(currentContact?.phone || '', [Validators.required, CtValidators.phoneValidator]),
       birthday: new FormGroup({
         day: new FormControl(currentContact?.birthday?.day || '', Validators.required),
         month: new FormControl(currentContact?.birthday?.month || '', Validators.required),
