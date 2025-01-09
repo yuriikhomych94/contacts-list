@@ -3,7 +3,7 @@ import { APP_INITIALIZER, Provider } from '@angular/core';
 import { ContactsService } from '../../contacts/services/contacts.service';
 
 export function initializeContactsData(contactService: ContactsService): () => void {
-  return () => contactService.initStorage(ContactsData);
+  return (): void => contactService.initStorage(ContactsData);
 }
 
 export const AppInitializerProvider: Provider = {

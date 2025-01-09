@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
 
 @Component({
@@ -7,25 +7,21 @@ import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
   styleUrls: ['./search-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchInputComponent implements OnInit {
+export class SearchInputComponent {
+
+  private readonly searchChanged: EventEmitter<string> = new EventEmitter<string>();
 
   @Input() label: string = 'Search';
 
-  @Output() onSearch: Observable<string>;
-
-  private readonly searchChanged = new EventEmitter<string>();
+  @Output() onSearch: Observable<string> = this.searchChanged.pipe(
+    debounceTime(300),
+    distinctUntilChanged()
+  );
 
   constructor() {
-    this.onSearch = this.searchChanged.pipe(
-      debounceTime(300),
-      distinctUntilChanged()
-    )
   }
 
-  ngOnInit(): void {
-  }
-
-  onInput(text: string) {
+  onInput(text: string): void {
     this.searchChanged.emit(text);
   }
 

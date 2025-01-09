@@ -10,7 +10,7 @@ export class TextEllipsisDirective {
     this.addEllipsisStyles();
   }
 
-  private addEllipsisStyles() {
+  private addEllipsisStyles(): void {
     this.renderer.setStyle(this.el.nativeElement, 'overflow', 'hidden');
     this.renderer.setStyle(this.el.nativeElement, 'white-space', 'nowrap');
     this.renderer.setStyle(this.el.nativeElement, 'text-overflow', 'ellipsis');

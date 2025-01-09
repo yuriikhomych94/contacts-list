@@ -22,7 +22,7 @@ export class EditContactComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSaveChange() {
+  onSaveChange(): void {
       const updatedContact = {
         ...this.contactService.currentContact,
         ...this.formComponent.form.value,
