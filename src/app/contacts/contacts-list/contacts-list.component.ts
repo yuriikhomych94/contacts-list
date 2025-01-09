@@ -28,7 +28,7 @@ export class ContactsListComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSearchChange(searchTerm: string) {
+  onSearchChange(searchTerm: string): void {
     if ( searchTerm ) {
       this.contacts$ = this.contactService.filterContacts(searchTerm)
     } else {
@@ -52,11 +52,11 @@ export class ContactsListComponent extends BaseComponent implements OnInit {
     ).subscribe(result => this.showMessage(result))
   }
 
-  openInfoContact(data: Contact) {
+  openInfoContact(data: Contact): void {
     this.dialogService.openInfoDialog(data)
   }
 
-  removeContact(id: string) {
+  removeContact(id: string): void {
     this.contactService.removeContact(id);
     this.showMessage({ success: true, message: 'Contact removed successfully' });
   }

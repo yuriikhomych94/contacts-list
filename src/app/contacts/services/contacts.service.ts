@@ -27,13 +27,13 @@ export class ContactsService {
     this.updateLocalStorage();
   }
 
-  removeContact(id: string) {
+  removeContact(id: string): void {
     const filteredContacts: Contact[] = this._contacts.value.filter(contact => contact.id !== id);
     this._contacts.next(filteredContacts)
     this.updateLocalStorage()
   }
 
-  applyContactChanges(changes: Partial<Contact>) {
+  applyContactChanges(changes: Partial<Contact>): void {
     const currentContact = this._currentContact.value;
     if (currentContact) {
       Object.assign(currentContact, changes);

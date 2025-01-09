@@ -21,7 +21,7 @@ export class CreateContactComponent implements OnInit {
   }
 
 
-  onCreateContact() {
+  onCreateContact(): void {
     this.contactService.addContact(this.formComponent.form.value);
     this.dialogRef.close({ success: true, message: 'Contact created successfully' });
     this.formComponent.form.reset();

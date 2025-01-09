@@ -9,7 +9,7 @@ export abstract class BaseComponent implements OnDestroy {
 
   protected destroy$ = new Subject<void>();
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationMessages } from '../../../core/validators/validators.message';
 import { BaseComponent } from '../../../core/base/base.component';
 import { takeUntil } from 'rxjs';
@@ -47,11 +47,11 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
     this.initForm();
   }
 
-  get canSave() {
+  get canSave(): boolean {
     return this.form.valid && this.form.dirty;
   }
 
-  hasError(controlName: string, validationType: string) {
+  hasError(controlName: string, validationType: string): boolean | undefined {
     const formControl = this.form.get(controlName);
     return formControl?.hasError(validationType);
   }
@@ -85,7 +85,7 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
     this.years = Array.from({ length: 101 }, (_, i) => currentYear - i);
   }
 
-  private getBirthdayControls() {
+  private getBirthdayControls(): Record<string, AbstractControl<any, any>> {
     const birthdayGroup = this.form.get('birthday') as FormGroup;
     return {
       year: birthdayGroup.get('year')!,
