@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, takeUntil } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogService } from '../services/dialog.service';
-import { ContactsService } from '../services/contacts.service';
-import { BaseComponent } from '../../core/base/base.component';
-import { Contact } from '../types/contact';
+import { DialogService } from '../../services/dialog.service';
+import { ContactsService } from '../../services/contacts.service';
+import { BaseComponent } from '../../../core/base/base.component';
+import { Contact } from '../../types/contact';
 
 @Component({
   selector: 'app-contacts-list',

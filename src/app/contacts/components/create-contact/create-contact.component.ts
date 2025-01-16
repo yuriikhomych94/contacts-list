@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { ContactsFormComponent } from '../../shared/components/contacts-form/contacts-form.component';
+import { ContactsFormComponent } from '../../../shared/components/contacts-form/contacts-form.component';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ContactsService } from '../services/contacts.service';
+import { ContactsService } from '../../services/contacts.service';
 
 @Component({
   selector: 'app-create-contact',
