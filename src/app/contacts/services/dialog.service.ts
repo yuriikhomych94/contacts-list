@@ -1,8 +1,8 @@
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Injectable } from '@angular/core';
-import { CreateContactComponent } from '../create-contact/create-contact.component';
-import { ContactDetailComponent } from '../contact-detail/contact-detail.component';
-import { EditContactComponent } from '../edit-contact/edit-contact.component';
+import { CreateContactComponent } from '../components/create-contact/create-contact.component';
+import { ContactDetailComponent } from '../components/contact-detail/contact-detail.component';
+import { EditContactComponent } from '../components/edit-contact/edit-contact.component';
 import { Contact } from '../types/contact';
 
 @Injectable({

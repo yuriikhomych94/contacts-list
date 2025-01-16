@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactsListComponent } from './contacts/contacts-list/contacts-list.component';
-import { ContactDetailComponent } from './contacts/contact-detail/contact-detail.component';
-import { CreateContactComponent } from './contacts/create-contact/create-contact.component';
-import { EditContactComponent } from './contacts/edit-contact/edit-contact.component';
+import { ContactsListComponent } from './contacts/components/contacts-list/contacts-list.component';
+import { ContactDetailComponent } from './contacts/components/contact-detail/contact-detail.component';
+import { CreateContactComponent } from './contacts/components/create-contact/create-contact.component';
+import { EditContactComponent } from './contacts/components/edit-contact/edit-contact.component';
 import { SearchInputComponent } from './shared/components/search-input/search-input.component';
 import { ContactsFormComponent } from './shared/components/contacts-form/contacts-form.component';
 import { AppInitializerProvider } from './core/initializer/contact-data-initializer';

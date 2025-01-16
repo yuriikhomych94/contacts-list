@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Contact } from '../types/contact';
+import { Contact } from '../../types/contact';
 
 @Component({
   selector: 'app-contact-detail',
