@@ -52,7 +52,7 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
   }
 
   hasError(controlName: string, validationType: string): boolean | undefined {
-    const formControl = this.form.get(controlName);
+    const formControl: AbstractControl<any, any> | null = this.form.get(controlName);
     return formControl?.hasError(validationType);
   }
 
@@ -81,12 +81,12 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
   }
 
   private initYears(): void {
-    const currentYear = new Date().getFullYear();
+    const currentYear: number = new Date().getFullYear();
     this.years = Array.from({ length: 101 }, (_, i) => currentYear - i);
   }
 
   private getBirthdayControls(): Record<string, AbstractControl<any, any>> {
-    const birthdayGroup = this.form.get('birthday') as FormGroup;
+    const birthdayGroup: FormGroup = this.form.get('birthday') as FormGroup;
     return {
       year: birthdayGroup.get('year')!,
       month: birthdayGroup.get('month')!,
@@ -101,7 +101,7 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
         takeUntil(this.destroy$)
       ).subscribe(() => {
         this.updateDays();
-        this.setValidatorsForBirthday();
+        this.setFutureDateValidators();
       })
     );
 
@@ -110,9 +110,9 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
   private updateDays(): void {
     const { year, month, day } = this.getBirthdayControls();
 
-    let maxDays = 31;
+    let maxDays: number = 31;
     if ( month.value ) {
-      const isLeapYear = this.isLeapYear(year.value);
+      const isLeapYear: boolean = this.isLeapYear(year.value);
       maxDays = +this.months.find(m => m.value === month.value)?.days!;
       if ( month.value === 2 && isLeapYear ) {
         maxDays = 29;
@@ -124,22 +124,20 @@ export class ContactsFormComponent extends BaseComponent implements OnInit {
     }
   }
 
-  private setValidatorsForBirthday(): void {
+  private setFutureDateValidators(): void {
     const { year, month, day } = this.getBirthdayControls();
-    const today = new Date();
-    const selectedDate = new Date(year.value, month.value - 1, day.value || 1);
-    const controls = [ year, month, day ];
-    controls.forEach(control => {
-      const errors: any = {};
-      if ( !control.value ) {
-        errors['required'] = true;
-      }
+    const today: Date = new Date();
+    const selectedDate: Date = new Date(year.value, month.value - 1, day.value || 1);
+    const controls: AbstractControl<any, any>[] = [ year, month, day ];
+    controls.forEach((control: AbstractControl<any, any>) => {
+      const errors: Record<string, boolean> = {};
       if ( year.value && month.value && day.value ) {
         if ( selectedDate > today ) {
           errors['futureDate'] = true;
         }
       }
       control.setErrors(Object.keys(errors).length > 0 ? errors : null);
+      control.markAsTouched();
     });
   }
 
