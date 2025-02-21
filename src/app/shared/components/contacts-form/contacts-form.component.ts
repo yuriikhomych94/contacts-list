@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ValidationMessages } from '../../../core/validators/validators.message';
+import { ValidationMessages } from '../../validators/validators.message';
 import { BaseComponent } from '../../../core/base/base.component';
 import { takeUntil } from 'rxjs';
-import { CtValidators } from '../../../core/validators/validators';
+import { CtValidators } from '../../validators/validators';
 import { Contact } from '../../../contacts/types/contact';
 
 @Component({
